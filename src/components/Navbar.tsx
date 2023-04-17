@@ -18,10 +18,10 @@ const Navbar = () => {
         {!isConnected && (
           <>
             <h3>Connect your wallet</h3>
-            <Connect />
           </>
         )}
 
+        <Connect />
 
         {isConnected && (
           <>
