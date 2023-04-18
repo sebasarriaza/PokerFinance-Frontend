@@ -1,31 +1,28 @@
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import styles from "../styles/Connect.module.css";
 
 export function Connect() {
-  const { connector, isConnected } = useAccount()
+  const { connector, isConnected } = useAccount();
   const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect()
-  const { disconnect } = useDisconnect()
+    useConnect();
+  const { disconnect } = useDisconnect();
 
   return (
-    <div>
+    <div className={styles.wallet}>
       <div>
         {isConnected && (
-          <button onClick={() => disconnect()}>
-            Disconnect from {connector?.name}
-          </button>
+          <button onClick={() => disconnect()}>Disconnect</button>
         )}
 
         {connectors
           .filter((x) => x.ready && x.id !== connector?.id)
           .map((x) => (
             <button key={x.id} onClick={() => connect({ connector: x })}>
-              {x.name}
-              {isLoading && x.id === pendingConnector?.id && ' (connecting)'}
+              Connect wallet
             </button>
           ))}
       </div>
-
       {error && <div>{error.message}</div>}
     </div>
-  )
+  );
 }
