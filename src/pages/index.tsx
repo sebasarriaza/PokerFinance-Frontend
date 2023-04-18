@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { useContractRead } from "wagmi";
 import { pokerFinanceContract } from "../constants/contracts";
 import FinanceButton from "../components/FinanceButton";
-import FinanceCardReads from "../components/FinanceCardReads";
+import FinanceCard from "../components/FinanceCard";
 
 function Page() {
   const { isConnected } = useAccount();
@@ -13,7 +13,7 @@ function Page() {
   return (
     <>
       <Navbar />
-      <FinanceCardReads />
+      <FinanceCard />
     </>
   );
 }
