@@ -19,19 +19,18 @@
   .logoContainer {
     display: flex;
     align-items: center;
-    gap: 6px;
     padding: 10px;
     border-radius: 10%;
     transition: transform 0.2s ease-in-out;
   }
   
   .logoContainer:hover {
-    transform: scale(1.02);
+    transform: translateY(-3px);
   }
   
   /* Relación de aspecto: 0.67:1 (99:148) */
   .logoImage{
-    width: 2.475em;
+    width: 3.7em;
     height: 3.7em;
   }
   
