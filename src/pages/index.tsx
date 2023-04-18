@@ -1,5 +1,5 @@
 import { useAccount } from "wagmi";
-import { Account, Connect, NetworkSwitcher } from "../components";
+import { Account, Connect, NetworkSwitcher } from "../components/wagmi";
 import Navbar from "../components/Navbar";
 import { useContractRead } from "wagmi";
 import { pokerFinanceContract } from "../constants/contracts";

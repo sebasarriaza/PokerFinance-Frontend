@@ -1,5 +1,5 @@
 import { useAccount, useEnsName } from 'wagmi'
-import style from '../styles/Account.module.css'
+import style from '../../styles/Account.module.css'
 
 export function Account() {
   const { address } = useAccount()

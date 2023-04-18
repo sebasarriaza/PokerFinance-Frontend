@@ -1,5 +1,5 @@
 import { useNetwork, useSwitchNetwork } from 'wagmi'
-import styles from '../styles/NetworkSwitcher.module.css';
+import styles from '../../styles/NetworkSwitcher.module.css';
 
 export function NetworkSwitcher() {
   const { chain } = useNetwork()

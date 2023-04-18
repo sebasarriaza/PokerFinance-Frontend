@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAccount } from "wagmi";
-import { Account, Connect, NetworkSwitcher } from "./";
+import { Account, Connect, NetworkSwitcher } from "./wagmi";
 import styles from "../styles/Navbar.module.css";
 import logo from "../public/logo.png";
 
