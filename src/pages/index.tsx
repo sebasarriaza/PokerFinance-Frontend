@@ -1,20 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAccount } from "wagmi";
-import { Account, Connect, NetworkSwitcher } from "../components/wagmi";
-import Navbar from "../components/Navbar";
-import { useContractRead } from "wagmi";
-import { pokerFinanceContract } from "../constants/contracts";
-import FinanceButton from "../components/FinanceButton";
-import FinanceCard from "../components/FinanceCard";
 import logo from "../public/logo.png";
 import clubs from "../public/clubs.png";
 import diamonds from "../public/diamonds.png";
 import style from "../styles/Home.module.css";
 
 function Page() {
-  const { isConnected } = useAccount();
-  const { address, isConnecting, isDisconnected } = useAccount();
 
   return (
     <>
@@ -23,7 +15,7 @@ function Page() {
         <h1 className={style.logoText}>Poker Finance</h1>
       </div>
       <div className={style.sectionContainer}>
-        <Link className={style.clubLink} href="/finance">
+        <Link className={style.clubLink} href="/tournaments">
           <section className={style.clubSection}>
             <Image className={style.clubImageTop} src={clubs} alt="club" />
             <h1 className={style.clubTitle}>I am a player</h1>
@@ -31,7 +23,7 @@ function Page() {
             <Image className={style.clubImageBottom} src={clubs} alt="club" />
           </section>
         </Link>
-        <Link className={style.diamondLink} href="/tournaments">
+        <Link className={style.diamondLink} href="/financing">
           <section className={style.diamondSection}>
             <Image className={style.diamondImageTop} src={diamonds} alt="diamond" />
             <h1 className={style.diamondTitle}>I am a patron</h1>
