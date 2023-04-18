@@ -1,5 +1,5 @@
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-import styles from "../../styles/Connect.module.css";
+import styles from "../../styles/wagmi/Connect.module.css";
 
 export function Connect() {
   const { connector, isConnected } = useAccount();
