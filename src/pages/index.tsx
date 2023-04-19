@@ -4,12 +4,13 @@ import { useAccount } from "wagmi";
 import logo from "../public/logo.png";
 import clubs from "../public/clubs.png";
 import diamonds from "../public/diamonds.png";
+import token from "../public/token.png";
 import style from "../styles/Home.module.css";
 
 function Page() {
 
   return (
-    <>
+    <div className={style.wapper}>
       <div className={style.logoContainer}>
         <Image className={style.logoImage} src={logo} alt="logo" />
         <h1 className={style.logoText}>Poker Finance</h1>
@@ -32,7 +33,15 @@ function Page() {
           </section>
         </Link>
       </div> 
-    </>
+      <div>
+        <Link className={style.tokenLink} href="/token">
+        <section className={style.tokenSection}>
+        <Image className={style.tokenImage} src={token} alt="token" />
+        <h4 className={style.tokenText}>Tokens</h4>
+        </section>
+        </Link>
+      </div>
+    </div>
   );
 }
 

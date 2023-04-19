@@ -1,6 +1,6 @@
 import { useContractWrite } from "wagmi";
 import { usePrepareContractWrite } from "wagmi";
-import ABI from "../constants/abi.json";
+import ABI from "../constants/pokerFinanceContractABI.json";
 
 function FinanceButton() {
   

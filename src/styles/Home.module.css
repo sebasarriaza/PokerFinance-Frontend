@@ -1,3 +1,7 @@
+.wapper {
+  background: linear-gradient(to right, #a01616, #6d0d0d);
+  height: 100vh;
+}
 /* Logo Container */
 .logoContainer {
   display: flex;
@@ -120,6 +124,41 @@
   color: #bebebe;
 }
 
+.tokenLink {
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.tokenSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.tokenImage {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+
+.tokenText {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 20px;
+}
+
+.tokenSection:hover {
+    transform: translateY(-5px);
+}
+
 /* For mobile phones: */
 @media only screen and (max-width: 600px) {
   .logoContainer {
@@ -138,5 +177,16 @@
     margin: 20px auto;
     height: calc(400px / 1.45);
     width: calc(300px / 1.45);
+  }
+  .tokenSection {
+    gap: 10px;
+  }
+  .tokenImage {
+    height: 30px;
+    width: 30px;
+  }
+  .tokenText {
+    font-size: 20px;
+    margin: 0;
   }
 }

@@ -9,6 +9,7 @@
   position: sticky;
   top: 0;
   backdrop-filter: blur(20px);
+  background: linear-gradient(to right, #a01616, #6d0d0d);
   }
 
   
@@ -28,7 +29,6 @@
     transform: translateY(-3px);
   }
   
-  /* Relación de aspecto: 0.67:1 (99:148) */
   .logoImage{
     width: 3.7em;
     height: 3.7em;
@@ -59,7 +59,18 @@
   /* For mobile phones: */
   @media only screen and (max-width: 600px) {
     .nav{
-      padding: 0em 2em 0em 2em;
+      padding: 0em 1em 0em 1em;
+      gap: 1em;
+    }
+    .logoContainer{
+      padding: 0;
+    }
+    .logoImage{
+      width: 2.7em;
+      height: 2.7em;
+    }
+    .logoText {
+      font-size: 1.4em;
     }
     .walletContainer{
       flex-direction: column;

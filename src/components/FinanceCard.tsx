@@ -1,8 +1,8 @@
 import FinanceButton from "./FinanceButton";
+import styles from "../styles/FinanceCard.module.css";
+import ABI from "../constants/pokerFinanceContractABI.json";
 import { useContractReads } from 'wagmi'
-import ABI from "../constants/abi.json";
 import { IWagmiContract } from "../constants/helperTypes";
-import style from "../styles/FinanceCard.module.css";
 
 const pokerFinanceContract:IWagmiContract = {
   address: '0x3C1C3a30851Ae4e231128e2f56fB1B1204a7225F',
@@ -43,7 +43,7 @@ export default function FinanceCard() {
   console.log(data, "read data")
 
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <p>Ticket: {data?Number(data[0]):null}</p>
       <p>Prize: {data?Number(data[1]):null}</p>
       <p>Amount financed: {data?Number(data[2]):null}</p>
