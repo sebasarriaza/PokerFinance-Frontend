@@ -13,7 +13,6 @@ function FinanceButton() {
   
   const { write } = useContractWrite(config);
 
-  // function callContract
   
   return (
     <div>

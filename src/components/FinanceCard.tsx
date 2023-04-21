@@ -1,24 +1,31 @@
 import FinanceButton from "./FinanceButton";
 import styles from "../styles/FinanceCard.module.css";
 import ABI from "../constants/pokerFinanceContractABI.json";
-import { useContractReads, useProvider } from "wagmi";
+import { useContractReads, useProvider, useSigner } from "wagmi";
 import { IWagmiContract } from "../constants/helperTypes";
 import { ethers } from "ethers";
 import { pokerFactoryContract } from "../constants/contracts";
+import { pokerFinanceContract } from "../constants/contracts";
 import { useEffect, useState } from "react";
+import { useContractWrite } from "wagmi";
+import { usePrepareContractWrite } from "wagmi";
 
 export default function FinanceCard() {
+
   
   const provider = useProvider()
-
+  
+  const [addressContract, setAddressContract] = useState<string[]>();
   const [addressPlayer, setAddressPlayer] = useState<string[]>();
   const [amountTotal, setAmountTotal] = useState<number[]>();
   const [fee, setFee] = useState<number[]>();
   const [datetimeLimit, setDatetimeLimit] = useState<number[]>();
+  const [viewButton, setViewButton] = useState<boolean>(false);
   const addressPlayerArray:string[] = [];
   const amountTotalArray:number[] = [];
   const feeArray:number[] = [];
   const datetimeLimitArray:number[] = [];
+  let selectedContract:string = "";
 
   function getDate(datestamp: number) {
 
@@ -34,7 +41,7 @@ export default function FinanceCard() {
 
   useEffect (()=>{
 
-    async function main(){
+    async function connectPokerFactoryContract(){
       const connectedPokerFactoryContract =  new ethers.Contract(
         pokerFactoryContract.address,
         pokerFactoryContract.abi,
@@ -45,6 +52,7 @@ export default function FinanceCard() {
         );
         console.log(pokerFactoryContractEvents, "past events");
         for (let i = 0; i < pokerFactoryContractEvents.length; i++) {
+          
           addressPlayerArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[0] : '')
           amountTotalArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[2] : 0)
           feeArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[3] : 0)
@@ -56,9 +64,44 @@ export default function FinanceCard() {
         setDatetimeLimit(datetimeLimitArray);
         setAddressPlayer(addressPlayerArray);
     }
-    main()
-  }, [])
+    connectPokerFactoryContract()
   
+  }, [])
+
+  const { data: signer, isError, isLoading } = useSigner()
+  
+  // async function connectPokerFinanceContract(index:number){
+  //   const connectedPokerFinanceContract =  new ethers.Contract(
+  //     addressPlayer[index],
+  //     pokerFinanceContract.abi,
+  //     provider
+  //     );
+  //     await connectedPokerFinanceContract.finance(amount)
+  // }
+  
+  const [amount, setAmount] = useState<number>(0);
+
+  const handleInputChange = (event:any) => {
+    setAmount(event.target.value);
+  };
+
+  const { config, error} = usePrepareContractWrite({
+    address: "0x72f4fea1c8224f4baa6f3cced273b13e1c5cb21c",
+    abi: ABI,
+    functionName: "finance",
+    args: [amount],
+  });
+  
+  const { write, status } = useContractWrite(config);
+  
+  console.log(status)
+  function callFinance(index:number){
+    selectedContract = addressPlayer[index];
+    write?.()
+    console.log(selectedContract, "selectedContract")
+    console.log(error)
+  }
+
 
   return (
     <>
@@ -70,7 +113,18 @@ export default function FinanceCard() {
       <p>Date limit: {datetimeLimit ? getDate(Number(datetimeLimit[index])) : null}
       </p>
       <p>{index}</p>
-      <FinanceButton />
+      <button onClick={
+        () => viewButton ? setViewButton(false) : setViewButton(true)
+      }>Finance</button>
+      <div>
+      {viewButton && (
+        <div>
+          <input type="number" value={amount} onChange={handleInputChange} />
+          <button onClick={() => write?.()}>Submit</button>
+        </div>
+        )}
+        
+      </div>
     </div>
     ))}
     </>
