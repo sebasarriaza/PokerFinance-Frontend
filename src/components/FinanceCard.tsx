@@ -47,16 +47,17 @@ export default function FinanceCard() {
         pokerFactoryContract.abi,
         provider
         );
-        const pokerFactoryContractEvents = await connectedPokerFactoryContract.queryFilter(
+        interface iPokerFactoryContract {}
+        const pokerFactoryContractEvents:any[] = await connectedPokerFactoryContract.queryFilter(
         "PokerFinanceCreated"
         );
         console.log(pokerFactoryContractEvents, "past events");
         for (let i = 0; i < pokerFactoryContractEvents.length; i++) {
-          console.log(pokerFactoryContractEvents[i].args)
-          addressPlayerArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[0] : '')
-          amountTotalArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[2] : 0)
-          feeArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[3] : 0)
-          datetimeLimitArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? Number(pokerFactoryContractEvents[i].args[4]) : 0)
+          
+          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? addressPlayerArray.push(pokerFactoryContractEvents[i].args[0]) : null;
+          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? amountTotalArray.push(pokerFactoryContractEvents[i].args[2]) : null;
+          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? feeArray.push(pokerFactoryContractEvents[i].args[3]) : null;
+          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? datetimeLimitArray.push(Number(pokerFactoryContractEvents[i].args[4])) : null;
         }
         setAddressPlayer(addressPlayerArray);
         setAmountTotal(amountTotalArray);
@@ -67,6 +68,8 @@ export default function FinanceCard() {
     connectPokerFactoryContract()
   
   }, [])
+
+  const { data: signer, isError, isLoading } = useSigner();
   
   const [amount, setAmount] = useState<number>(0);
 
@@ -85,13 +88,12 @@ export default function FinanceCard() {
   
   console.log(status)
   function callFinance(index:number){
-    if (addressPlayer == undefined) return;
-    selectedContract = addressPlayer[index];
+    if (addressPlayer == null || addressPlayer == undefined) return;
+    selectedContract =  addressPlayer[index];
     write?.()
     console.log(selectedContract, "selectedContract")
     console.log(error)
   }
-
 
   return (
     <>
