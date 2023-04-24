@@ -107,12 +107,12 @@ export default function FinanceCard() {
     <>
     {addressPlayer?.map((item, index) => (
     <div className={styles.container}  key={index}>
+      <p>{index}</p>
       <p>Player: {addressPlayer ? addressPlayer[index] : null}</p>
       <p>Ticket: {amountTotal ? Number(amountTotal[index]) : null}</p>
       <p>Fee: {fee ? Number(fee[index]/100) : null}%</p>
       <p>Date limit: {datetimeLimit ? getDate(Number(datetimeLimit[index])) : null}
       </p>
-      <p>{index}</p>
       <button onClick={
         () => viewButton ? setViewButton(false) : setViewButton(true)
       }>Finance</button>
