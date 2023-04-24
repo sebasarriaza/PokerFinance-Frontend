@@ -54,11 +54,10 @@ export default function FinanceCard() {
         console.log(pokerFactoryContractEvents, "past events");
         for (let i = 0; i < pokerFactoryContractEvents.length; i++) {
           
-          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? addressPlayerArray.push(pokerFactoryContractEvents[i].args[0]) : null;
-          // addressPlayerArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[0]! : '')
-          // amountTotalArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[2] : 0)
-          // feeArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[3] : 0)
-          // datetimeLimitArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? Number(pokerFactoryContractEvents[i].args[4]) : 0)
+          addressPlayerArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[0] : '')
+          amountTotalArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[2] : 0)
+          feeArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[3] : 0)
+          datetimeLimitArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? Number(pokerFactoryContractEvents[i].args[4]) : 0)
         }
         setAddressPlayer(addressPlayerArray);
         setAmountTotal(amountTotalArray);
@@ -70,16 +69,7 @@ export default function FinanceCard() {
   
   }, [])
 
-  const { data: signer, isError, isLoading } = useSigner()
-  
-  // async function connectPokerFinanceContract(index:number){
-  //   const connectedPokerFinanceContract =  new ethers.Contract(
-  //     addressPlayer[index],
-  //     pokerFinanceContract.abi,
-  //     provider
-  //     );
-  //     await connectedPokerFinanceContract.finance(amount)
-  // }
+  const { data: signer, isError, isLoading } = useSigner();
   
   const [amount, setAmount] = useState<number>(0);
 
@@ -105,30 +95,51 @@ export default function FinanceCard() {
     console.log(error)
   }
 
-
   return (
     <>
     {addressPlayer?.map((item, index) => (
-    <div className={styles.container}  key={index}>
-      <p>{index}</p>
-      <p>Player: {addressPlayer ? addressPlayer[index] : null}</p>
-      <p>Ticket: {amountTotal ? Number(amountTotal[index]) : null}</p>
-      <p>Fee: {fee ? Number(fee[index]/100) : null}%</p>
-      <p>Date limit: {datetimeLimit ? getDate(Number(datetimeLimit[index])) : null}
-      </p>
-      <button onClick={
-        () => viewButton ? setViewButton(false) : setViewButton(true)
-      }>Finance</button>
-      <div>
-      {viewButton && (
-        <div>
-          <input type="number" value={amount} onChange={handleInputChange} />
-          <button onClick={() => write?.()}>Submit</button>
+    
+    <div className={styles.container} key={index}>
+          <div className={styles.card}>
+            <p className={styles.index}>{index}</p>
+            <p className={styles.addressPlayer}>
+              Player: {addressPlayer ? addressPlayer[index] : null}
+            </p>
+            <p className={styles.amountTotal}>
+              Ticket: {amountTotal ? Number(amountTotal[index]) : null}
+            </p>
+            <p className={styles.fee}>
+              Fee: {fee ? Number(fee[index] / 100) : null}%
+            </p>
+            <p className={styles.datetimeLimit}>
+              Date limit:{" "}
+              {datetimeLimit ? getDate(Number(datetimeLimit[index])) : null}
+            </p>
+            <button
+              className={styles.button}
+              onClick={() =>
+                viewButton ? setViewButton(false) : setViewButton(true)
+              }
+            >
+              Finance
+            </button>
+            <div className={styles.finance}>
+              {viewButton && (
+                <div className={styles.finance}>
+                  <input
+                    className={styles.input}
+                    type="number"
+                    value={amount}
+                    onChange={handleInputChange}
+                  />
+                  <button className={styles.button} onClick={() => write?.()}>
+                    Submit
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-        )}
-        
-      </div>
-    </div>
     ))}
     </>
   );
