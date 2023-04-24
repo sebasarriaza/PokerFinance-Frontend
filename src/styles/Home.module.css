@@ -1,0 +1,192 @@
+.wapper {
+  background: linear-gradient(to right, #a01616, #6d0d0d);
+  height: 100vh;
+}
+/* Logo Container */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6em;
+}
+
+.logoImage {
+  height: 4.8em;
+  width: 4.8em;
+}
+
+.logoText {
+  font-family: Georgia;
+  font-size: 3em;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+}
+
+/* Container */
+.sectionContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px auto;
+  max-width: 900px;
+}
+
+/* Club Section */
+.clubLink {
+  text-decoration: none;
+}
+
+/* Relación de aspecto: 11:8 */
+.clubSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+.clubSection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.clubImageTop {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+.clubImageBottom {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+
+.clubTitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.clubExplore {
+  font-size: 20px;
+  color: #bebebe;
+}
+
+/* Diamond Section */
+.diamondLink {
+  text-decoration: none;
+}
+
+.diamondSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #000000;
+  transition: all 0.2s ease-in-out;
+}
+
+.diamondSection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.diamondImageTop {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+
+.diamondImageBottom {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+
+.diamondTitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.diamondExplore {
+  font-size: 20px;
+  color: #bebebe;
+}
+
+.tokenLink {
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.tokenSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.tokenImage {
+  filter: invert(0.3);
+  height: 50px;
+  width: 50px;
+}
+
+.tokenText {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 20px;
+}
+
+.tokenSection:hover {
+    transform: translateY(-5px);
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  .logoContainer {
+    padding: 2em;
+  }
+  .sectionContainer {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .clubSection {
+    margin: 20px auto;
+    height: calc(400px / 1.45);
+    width: calc(300px / 1.45);
+  }
+  .diamondSection {
+    margin: 20px auto;
+    height: calc(400px / 1.45);
+    width: calc(300px / 1.45);
+  }
+  .tokenSection {
+    gap: 10px;
+  }
+  .tokenImage {
+    height: 30px;
+    width: 30px;
+  }
+  .tokenText {
+    font-size: 20px;
+    margin: 0;
+  }
+}

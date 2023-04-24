@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .addressLabel,
+  .amountLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #cdcdcd;
+  }
+  
+  .addressInput,
+  .amountInput {
+    padding: 5px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+  }
+  
+  .mintButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .mintButton:hover {
+    background-color: #3e8e41;
+  }
+  

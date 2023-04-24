@@ -1,0 +1,78 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: max-content;
+  /* width: 100%; */
+  padding: 1em 2em 1em 2em;
+  border-bottom: 2px solid #d4aaaa53;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(to right, #a01616, #6d0d0d);
+  }
+
+  
+  .logoLink{
+    text-decoration: none;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10%;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .logoContainer:hover {
+    transform: translateY(-3px);
+  }
+  
+  .logoImage{
+    width: 3.7em;
+    height: 3.7em;
+  }
+  
+  .logoText {
+    font-family:  Georgia;
+    font-size: 2.3em;
+    font-weight: bold;
+    line-height: 1;
+    color: #000000;
+  }
+  
+  .walletContainer {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    padding: 1em 0em 1em 1em;
+  }
+  
+  .walletText {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 16px;
+  }
+
+  /* For mobile phones: */
+  @media only screen and (max-width: 600px) {
+    .nav{
+      padding: 0em 1em 0em 1em;
+      gap: 1em;
+    }
+    .logoContainer{
+      padding: 0;
+    }
+    .logoImage{
+      width: 2.7em;
+      height: 2.7em;
+    }
+    .logoText {
+      font-size: 1.4em;
+    }
+    .walletContainer{
+      flex-direction: column;
+    }
+  }

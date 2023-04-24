@@ -1,0 +1,39 @@
+.wallet {
+    display: flex;
+    align-items: center;
+    padding: 0em 1em 0em 1em;
+  }
+  
+  .wallet > div {
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+  
+  .wallet button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 1.2em 2.4em;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .wallet button:hover {
+    background-color: #1c1c1cf5;
+    color: #f2f2f2;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
+  }
+
+  /* For mobile phones: */
+  @media only screen and (max-width: 600px) {
+    .wallet button{
+      padding: 0.8em 1.4em;
+      font-size: 0.7em;
+    }
+  }
+  
+  
