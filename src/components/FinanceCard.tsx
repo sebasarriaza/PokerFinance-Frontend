@@ -54,10 +54,10 @@ export default function FinanceCard() {
         console.log(pokerFactoryContractEvents, "past events");
         for (let i = 0; i < pokerFactoryContractEvents.length; i++) {
           
-          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? addressPlayerArray.push(pokerFactoryContractEvents[i].args[0]) : null;
-          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? amountTotalArray.push(pokerFactoryContractEvents[i].args[2]) : null;
-          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? feeArray.push(pokerFactoryContractEvents[i].args[3]) : null;
-          pokerFactoryContractEvents && (pokerFactoryContractEvents[i].args.length>=3) && (pokerFactoryContractEvents.length!=0) ? datetimeLimitArray.push(Number(pokerFactoryContractEvents[i].args[4])) : null;
+          addressPlayerArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[0] : '')
+          amountTotalArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[2] : 0)
+          feeArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? pokerFactoryContractEvents[i].args[3] : 0)
+          datetimeLimitArray.push(pokerFactoryContractEvents && pokerFactoryContractEvents[i].args ? Number(pokerFactoryContractEvents[i].args[4]) : 0)
         }
         setAddressPlayer(addressPlayerArray);
         setAmountTotal(amountTotalArray);
